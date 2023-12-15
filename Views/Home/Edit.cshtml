@@ -1,0 +1,69 @@
+﻿@model Task11_crud_.Models.CustomerList
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+
+    .input-validation-error {
+        border: 1px solid red;
+    }
+</style>
+<center>
+<div class="border p-2" style="height:300px;width:500px">
+<div id="editFormContainer">
+    <form asp-action="Edit" id="editCustomerForm" method="post">
+        <div>
+            <label asp-for="Id" class="mt-2"></label>
+            <input asp-for="Id" id="Id" readonly />
+            <span asp-validation-for="Id" class="field-validation-error"></span>
+        </div>
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" id="Name" />
+            <span asp-validation-for="Name" class="field-validation-error"></span>
+        </div>
+        @* <div>
+        <label asp-for="ProductId"></label>
+        <select asp-for="ProductId" class="form-control" >
+        @foreach (var item in Model.ProductList)
+        {
+        <option value="@item.Value">@item.Text</option>
+        }
+        </select>
+        <span asp-validation-for="ProductId" class="field-validation-error"></span>
+        </div>*@
+        <div>
+            <label asp-for="ProductId"></label>
+            @Html.DropDownListFor(model => model.ProductId, Model.ProductList ,new { @id="ProductId" })
+            <span asp-validation-for="ProductId" class="field-validation-error"></span>
+        </div>
+
+        <div>
+            <label asp-for="Address"></label>
+            <input asp-for="Address" id="Address" />
+            <span asp-validation-for="Address" class="field-validation-error"></span>
+        </div>
+        <div>
+            <label asp-for="Phone"></label>
+            <input asp-for="Phone" id="Phone" />
+            <span asp-validation-for="Phone" class="field-validation-error"></span>
+        </div>
+        <div>
+            <label asp-for="Email"></label>
+            <input asp-for="Email" id="Email" onblur="checkUniqueEmail()" />
+            <span asp-validation-for="Email" class="field-validation-error"></span>
+        </div>
+        <div>
+            <label>Gender:</label>
+            <input type="radio" id="Male" name="GenderName" value="1" />
+            <label for="Male">Male</label>
+            <input type="radio" id="Female" name="GenderName" value="2" />
+            <label for="Female">Female</label>
+            <span asp-validation-for="GenderName" class="field-validation-error"></span>
+        </div>
+        <button type="submit" onclick="editCustomer()">Edit</button>
+        <div id="editMessage"></div>
+    </form>
+    </div>
+</center>

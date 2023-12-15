@@ -1,0 +1,62 @@
+﻿@model Task11_crud_.Models.Contact
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    
+    
+  <div class="border p-2" style="height:300px;width:500px">
+    <h2 class="mt-3">Contact Us</h2>
+    <form  action="Contact" method="post" class="mt-3">
+        <label for="fullName" class="m-2">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required class="m-2">
+        <br>
+
+        <label for="message" class="m-2">Message:</label>
+        <input type="text" id="message" name="message"  required class="m-1">
+        <br>
+            @Html.CheckBoxFor(model=>model.agreeTerms)
+        <label for="agreeTerms">I agree to the terms and conditions</label>
+        
+        <br>
+        @*<span id="termsError" class="error-message"></span>*@
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+  </div>
+</center>
+
+    @*<script>
+        function validateForm() {
+           
+            var agreeTermsCheckbox = document.getElementById('agreeTerms');
+            var termsErrorSpan = document.getElementById('termsError');
+
+            if (!agreeTermsCheckbox.checked) {
+                termsErrorSpan.innerText = 'Please agree to the terms and conditions.';
+                return false; 
+            } else {
+                termsErrorSpan.innerText = '';
+                return true;
+            }
+        }
+    </script>*@
+</body>
+</html>
+

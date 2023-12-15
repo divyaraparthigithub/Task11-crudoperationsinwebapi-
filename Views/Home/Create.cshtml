@@ -1,0 +1,124 @@
+﻿@model Task11_crud_.Models.Customer
+<style>
+   
+    .form-group {
+        margin-bottom: 15px;
+        margin-top:20px;
+        margin-right:50px;
+        margin-left:15px;
+       
+    }
+
+    .label {
+        display: block;
+        margin-bottom: 5px;
+        margin -left:10px;
+    }
+
+    .input {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+
+    .radio-group {
+        display: flex;
+        align-items: center;
+    }
+
+    .radio-group label {
+            margin-right: 15px;
+   }
+
+   /* .container1 {
+        Height:auto;
+        width:70vh;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        display:flex;
+        justify-content:center;
+    }*/
+    .field-validation-error {
+        color: red;
+    }
+
+    .input-validation-error {
+        border: 1px solid red;
+    }
+
+    .required-symbol {
+        color: red;
+        margin-right: 5px;
+    }
+   
+
+</style>
+
+<body>
+ <center>
+ <div class="border p-2" style="height:300px;width:500px">
+<form asp-action="Create" id="createCustomer" method="post">
+    
+    <div class="form-group">
+        <label class="ps-3" asp-for="Name">
+            <span class="required-symbol">*</span> Name
+        </label>
+        <input asp-for="Name" id="Name" />
+        <span asp-validation-for="Name" class="field-validation-error"></span>
+    </div>
+    <div >
+         <label asp-for="ProductId">
+            <span class="required-symbol">*</span> ProductId
+        </label>
+        <select asp-for="ProductId"  id="ProductId">
+            @foreach (var item in Model.ProductList)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+        <span asp-validation-for="ProductId" class="field-validation-error"></span>
+    </div>
+    <div class="form-group">
+        <label class="ps-3" asp-for="Address">
+            <span class="required-symbol">*</span> Address
+        </label>
+
+        <input asp-for="Address" id="Address" />
+        <span asp-validation-for="Address" class="field-validation-error"></span>
+    </div>
+    <div class="form-group">
+        <label class="ps-3" asp-for="Phone">
+            <span class="required-symbol">*</span> Phone
+        </label>
+        <input asp-for="Phone" id="Phone" />
+        <span asp-validation-for="Phone" class="field-validation-error"></span>
+    </div>
+    <div class="form-group">
+        <label class="ps-3" asp-for="Email">
+            <span class="required-symbol">*</span> Email
+        </label>
+        <input asp-for="Email" id="Email" />
+        <span asp-validation-for="Email" class="field-validation-error"></span>
+    </div>
+    <div class ="form-group radio-group">
+        <label class="ps-3">
+            <span class="required-symbol">*</span>Gender
+        </label>
+        <input type="radio" id="Male" name="GenderId" value="1" />
+                    <label class="ps-3" for="Male">Male</label>
+        <input type="radio" id="Female" name="GenderId" value="2" />
+                    <label class="ps-3" for="Female">Female</label>
+        <span asp-validation-for="GenderId" class="field-validation-error"></span>
+    </div>
+        <button class="form-group"  onclick="createCustomer()" type="submit">Create</button>
+    <div id="message"></div>
+</form>
+       
+</div>
+    </center>
+</body>
+
+
+
+

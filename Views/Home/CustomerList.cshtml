@@ -1,0 +1,75 @@
+﻿@model List<Task11_crud_.Models.CustomerList>;
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: green;
+            Color: white;
+            width: 150px;
+        }
+
+        td {
+            width: 150px;
+            text-align: center;
+            border: 1px solid black;
+            padding: 5px
+        }
+    </style>
+    <center>
+        <title>
+            Customer List
+        </title>
+    </center>
+</head>
+<body id="customerListBtn">
+    <center><h1>Customer List</h1></center>
+    <center>
+        <table>
+            <thead>
+                <tr>
+                    <th style="padding-right:20px;">ID</th>&nbsp;&nbsp;&nbsp;
+                    <th style="padding-right:20px;">CustomerName</th>&nbsp;&nbsp;&nbsp;
+                    <th style="padding-right:20px;">CustomerAddress</th>&nbsp;&nbsp;&nbsp;
+                    <th style="padding-right:20px;">ProductName</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <th style="padding-right:20px;">PhoneNumber</th>
+                    <th style="padding-right:20px;">EmailId</th>
+                    <th style="padding-right:20px;">ProductName</th>
+                    <th style="padding-right:20px;">GenderName</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model)
+                {
+                    <tr>
+                        <td>@customer.Id</td>
+                        <td>@customer.Name</td>
+                        <td>@customer.Address</td>
+                        <td>@customer.ProductName</td>
+                        <td>@customer.Phone</td>
+                        <td>@customer.Email</td>
+                        <td>@customer.ProductName</td>
+                        <td>@customer.GenderName</td>
+                        <td>
+                            <a asp-controller="Home" asp-action="GetDetailsById" asp-route-id="@customer.Id">Edit</a>
+                        </td>
+                        <td>
+                            <a asp-controller="Home" asp-action="Delete" asp-route-id="@customer.Id">Delete</a>
+                        </td>
+                        
+
+                    </tr>
+                }
+            </tbody>
+    </center>
+    </table>
+    </body>
+
+

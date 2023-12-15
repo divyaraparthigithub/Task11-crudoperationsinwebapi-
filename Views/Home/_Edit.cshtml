@@ -1,0 +1,40 @@
+﻿@model Task11_crud_.Models.CustomerList
+<style>
+    div {
+        width: 100%;
+    }
+</style>
+
+<div id="editCustomerModal" title="Edit Customer" style="border: 1px solid #ccc; padding: 5px; border-radius: 5px;">
+    <form id="editCustomerForm">
+        <input type="hidden" asp-for="Id" />
+        <div style="margin-bottom: 10px;">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label asp-for="Address"></label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+            <label asp-for="ProductId"></label>
+            @Html.DropDownListFor(model => model.ProductId, Model.ProductList, new { @class = "form-control" })
+            <span asp-validation-for="ProductId" class="text-danger"></span>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label asp-for="Phone"></label>
+            <input asp-for="Phone" class="form-control" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </form>
+</div>
+
+
